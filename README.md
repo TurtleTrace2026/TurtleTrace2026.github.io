@@ -56,7 +56,7 @@ npm run build
 
 ## 在线演示
 
-项目已部署至 GitHub Pages: [查看演示](https://TurtleTrace2026.github.io/StockV2.0/)
+项目已部署至 GitHub Pages: [查看演示](https://TurtleTrace2026.github.io/)
 
 ## 支持的股票代码
 
