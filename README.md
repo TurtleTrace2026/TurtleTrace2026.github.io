@@ -1,45 +1,48 @@
-# 股票投资分析系统
+# 龟迹复盘 - 股票个人投资分析系统
 
-一个简单高效的个人股票投资分析工具，帮助个人投资者管理持仓、追踪收益。
+一个简洁实用的个人股票投资组合管理工具，帮助您追踪持仓、分析收益、复盘交易。
 
 ## 功能特性
 
-| 模块 | 功能 |
-|------|------|
-| **持仓管理** | 添加/删除股票持仓，支持股票代码搜索 |
-| **收益看板** | 实时计算盈亏、收益率，展示汇总数据 |
-| **新闻快讯** | 根据持仓股票显示相关财经新闻 |
-| **数据管理** | 导出 CSV/JSON，导入 JSON 备份 |
+### 📊 持仓管理
+- **添加/删除持仓** - 支持通过股票代码、名称或拼音搜索添加股票
+- **买入/卖出交易** - 记录每笔交易，支持加仓和减仓操作
+- **动态成本价计算** - 根据买卖记录自动计算最新持仓成本
+- **交易历史追踪** - 查看完整的交易记录，便于复盘分析
 
-## 项目结构
+### 📈 收益分析
+- **实时行情** - 从东方财富API获取最新股价数据
+- **收益统计** - 显示总成本、总市值、总盈亏和收益率
+- **个股明细** - 查看每只股票的成本、市值、盈亏和占比
+- **涨跌幅计算** - 基于最新成本价计算，准确反映投资收益
 
-```
-StockV2.0/
-├── docs/              # GitHub Pages 静态页面
-├── stock-app/         # React 主应用
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ui/              # 基础 UI 组件
-│   │   │   └── dashboard/       # 业务组件
-│   │   ├── services/            # 数据服务
-│   │   ├── types/               # TypeScript 类型定义
-│   │   └── utils/               # 工具函数
-│   └── package.json
-└── .github/
-    └── workflows/               # GitHub Actions 工作流
-```
+### 💾 数据管理
+- **本地存储** - 数据保存在浏览器本地，无需注册登录
+- **数据导出** - 支持导出JSON格式数据，方便备份
+- **数据导入** - 支持从备份文件恢复数据
+
+## 技术栈
+
+- **前端框架**: React 19 + TypeScript
+- **构建工具**: Vite
+- **UI组件**: Tailwind CSS + shadcn/ui
+- **图标库**: Lucide React
+- **状态管理**: React Hooks
+- **数据存储**: localStorage
 
 ## 快速开始
 
-### 运行应用
+### 安装依赖
 
 ```bash
-cd stock-app
 npm install
-npm run dev
 ```
 
-然后在浏览器打开 http://localhost:5173/
+### 启动开发服务器
+
+```bash
+npm run dev
+```
 
 ### 构建生产版本
 
@@ -47,37 +50,94 @@ npm run dev
 npm run build
 ```
 
-## 技术栈
+### 预览生产构建
 
-- **前端框架**: React 18 + TypeScript
-- **构建工具**: Vite
-- **UI 库**: Tailwind CSS + shadcn/ui
-- **图标**: Lucide React
+```bash
+npm run preview
+```
 
-## 在线演示
+## 项目结构
 
-项目已部署至 GitHub Pages: [查看演示](https://TurtleTrace2026.github.io/)
+```
+TurtleTrace/
+├── src/
+│   ├── components/
+│   │   ├── ui/              # 基础UI组件
+│   │   └── dashboard/       # 业务组件
+│   │       ├── PositionManager.tsx    # 持仓管理
+│   │       ├── ProfitDashboard.tsx    # 收益分析
+│   │       ├── NewsFeed.tsx           # 新闻快讯
+│   │       └── DataExport.tsx         # 数据管理
+│   ├── services/
+│   │   ├── stockService.ts   # 股票行情API
+│   │   └── stockDatabase.ts  # 股票数据库
+│   ├── types/
+│   │   └── index.ts          # 类型定义
+│   ├── utils/
+│   │   └── calculations.ts   # 计算工具
+│   └── App.tsx               # 主应用
+└── ...
+```
 
-## 支持的股票代码
+## 核心功能说明
 
-系统内置了以下 A 股常见股票用于测试（使用模拟数据）：
+### 动态成本价计算
 
-| 代码 | 名称 |
-|------|------|
-| 600519.SH | 贵州茅台 |
-| 000858.SZ | 五粮液 |
-| 600036.SH | 招商银行 |
-| 601318.SH | 中国平安 |
-| 000333.SZ | 美的集团 |
-| 600276.SH | 恒瑞医药 |
-| 002594.SZ | 比亚迪 |
+系统采用移动加权平均法计算持仓成本：
 
-> 注意：当前版本使用模拟数据，后续可接入真实 API
+```
+最新成本价 = (累计买入金额 - 累计卖出金额) / 当前持仓数量
+```
 
-## 许可证
+每当执行买入或卖出操作时，系统会自动更新持仓成本，确保成本价准确反映您的实际投入。
 
-MIT License
+### 数据来源
 
----
+- **股票行情**: 东方财富API (`https://push2.eastmoney.com`)
+- **股票数据库**: 内置A股常用股票代码及名称
 
-**免责声明**: 本项目仅供学习和研究使用，数据不构成投资建议。
+### 数据隐私
+
+- 所有数据存储在您的浏览器本地（localStorage）
+- 不上传任何个人信息到服务器
+- 建议定期使用导出功能备份数据
+
+## 使用说明
+
+### 1. 添加持仓
+
+点击"添加持仓"按钮，搜索并选择股票，输入买入价格和数量即可添加。
+
+### 2. 交易操作
+
+- **买入**: 点击持仓卡片上的"买入"按钮进行加仓
+- **卖出**: 点击"卖出"按钮进行减仓（会显示实现盈亏）
+
+### 3. 刷新行情
+
+点击"刷新价格"按钮获取最新股价，系统会自动更新涨跌幅。
+
+### 4. 查看交易记录
+
+点击持仓卡片底部的"查看交易记录"按钮，查看所有历史交易。
+
+## 注意事项
+
+- 本项目数据仅供参考，不构成任何投资建议
+- 股票投资有风险，入市需谨慎
+- 建议定期备份数据，避免浏览器数据丢失
+
+## License
+
+Licensed under the Apache License, Version 2.0
+
+## Star History
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=TurtleTrace2026/TurtleTrace&type=date&legend=top-left)](https://www.star-history.com/#TurtleTrace2026/TurtleTrace&type=date&legend=top-left)
+
+## 致谢
+
+- 股票数据来自 [东方财富网](https://www.eastmoney.com/)
+- UI组件基于 [shadcn/ui](https://ui.shadcn.com/)
