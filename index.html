@@ -283,6 +283,46 @@
             font-weight: 600;
         }
 
+        .workflow-steps {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            padding-left: 0;
+            list-style: none;
+            counter-reset: workflow-counter;
+        }
+
+        .workflow-steps li {
+            position: relative;
+            padding: 1rem 1rem 1rem 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--muted);
+            border-radius: var(--radius);
+            counter-increment: workflow-counter;
+        }
+
+        .workflow-steps li::before {
+            content: counter(workflow-counter);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .workflow-steps li strong {
+            color: var(--foreground);
+            font-weight: 600;
+        }
+
         /* Tech Stack */
         .techstack {
             padding: 4rem 2rem;
@@ -536,6 +576,8 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="#features">功能特性</a></li>
+                    <li><a href="#review">每日复盘</a></li>
+                    <li><a href="#news">新闻快讯</a></li>
                     <li><a href="#core">核心功能</a></li>
                     <li><a href="#tech">技术栈</a></li>
                     <li><a href="#get-started">快速开始</a></li>
@@ -637,6 +679,19 @@
                         <li>历史数据可追溯</li>
                     </ul>
                 </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>情绪与原因标签</h3>
+                    <ul>
+                        <li>标记交易时的情绪状态（冲动追高、理性建仓等）</li>
+                        <li>记录交易原因（财报利好、技术突破、板块轮动等）</li>
+                        <li>便于复盘时分析交易决策的心理因素</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -704,6 +759,19 @@
                         <li>支持红涨绿跌显示</li>
                     </ul>
                 </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>清仓收益追踪</h3>
+                    <ul>
+                        <li>追踪已清仓股票的总盈亏</li>
+                        <li>统计清仓收益率</li>
+                        <li>历史交易完整记录</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -767,18 +835,215 @@
         </div>
     </section>
 
+    <!-- Daily Review Section -->
+    <section id="review" class="features">
+        <div class="section-title">
+            <h2>每日复盘</h2>
+            <p>记录交易历程，提升投资水平</p>
+        </div>
+
+        <div class="feature-category">
+            <div class="category-title">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <line x1="10" y1="9" x2="8" y2="9"/>
+                </svg>
+                复盘内容
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3v18h18"/>
+                            <path d="M18 9l-5 5-4-4-3 3"/>
+                        </svg>
+                    </div>
+                    <h3>大盘指数追踪</h3>
+                    <ul>
+                        <li>实时显示上证指数、深证成指、创业板指等主要指数</li>
+                        <li>了解市场整体走势</li>
+                        <li>辅助判断市场环境</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>持仓买卖情况</h3>
+                    <ul>
+                        <li>自动展示当日持仓盈亏</li>
+                        <li>统计交易胜率</li>
+                        <li>分析持仓表现</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+                        </svg>
+                    </div>
+                    <h3>操作回顾与反思</h3>
+                    <ul>
+                        <li>自动提取当日交易记录</li>
+                        <li>支持反思总结</li>
+                        <li>便于经验积累</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>市场情绪判断</h3>
+                    <ul>
+                        <li>记录当日市场情绪</li>
+                        <li>添加观察笔记</li>
+                        <li>培养市场感觉</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>总结感悟</h3>
+                    <ul>
+                        <li>快捷模板与自由文本结合</li>
+                        <li>记录交易心得</li>
+                        <li>积累投资智慧</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3>历史复盘查看</h3>
+                    <ul>
+                        <li>日历视图浏览历史</li>
+                        <li>随时查看过往复盘</li>
+                        <li>回顾投资历程</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                    </div>
+                    <h3>复盘导出</h3>
+                    <ul>
+                        <li>支持导出为 Markdown 格式</li>
+                        <li>支持导出为 PDF 格式</li>
+                        <li>便于保存和分享</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Feed Section -->
+    <section id="news" class="features">
+        <div class="section-title">
+            <h2>新闻快讯</h2>
+            <p>及时掌握市场动态</p>
+        </div>
+
+        <div class="feature-category">
+            <div class="category-title">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+                    <path d="M18 14h-8"/>
+                    <path d="M15 18h-5"/>
+                    <path d="M10 6h8v4h-8V6Z"/>
+                </svg>
+                资讯功能
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>实时资讯</h3>
+                    <ul>
+                        <li>获取市场最新新闻和公告</li>
+                        <li>快速了解重要资讯</li>
+                        <li>把握市场机会</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>持仓相关</h3>
+                    <ul>
+                        <li>自动筛选持仓股票相关资讯</li>
+                        <li>关注持仓动态</li>
+                        <li>及时了解重要信息</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="3" y1="9" x2="21" y2="9"/>
+                            <line x1="9" y1="21" x2="9" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>快速浏览</h3>
+                    <ul>
+                        <li>简洁的卡片式展示</li>
+                        <li>清晰的信息分类</li>
+                        <li>高效阅读体验</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Core Feature Section -->
     <section id="core" class="core-feature">
         <div class="section-title">
             <h2>核心功能说明</h2>
-            <p>动态成本价计算算法</p>
+            <p>动态成本价计算与每日复盘工作流</p>
         </div>
+
+        <h3 style="text-align: center; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--foreground);">动态成本价计算</h3>
         <p style="text-align: center; color: var(--muted-foreground); max-width: 700px; margin: 0 auto;">
             系统采用移动加权平均法计算持仓成本，每当执行买入或卖出操作时，系统会自动更新持仓成本，确保成本价准确反映您的实际投入。
         </p>
         <div class="formula-box">
             <code>最新成本价 = (累计买入金额 - 累计卖出金额) / 当前持仓数量</code>
         </div>
+
+        <h3 style="text-align: center; font-size: 1.25rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; color: var(--foreground);">每日复盘工作流</h3>
+        <p style="text-align: center; color: var(--muted-foreground); max-width: 700px; margin: 0 auto;">
+            通过结构化的复盘流程，帮助您系统地记录和分析每日交易，持续提升投资水平。
+        </p>
+        <ol class="workflow-steps">
+            <li><strong>选择日期</strong> - 默认当日，可通过日历选择历史日期</li>
+            <li><strong>自动填充</strong> - 系统自动拉取大盘数据、持仓信息、当日交易</li>
+            <li><strong>板块填写</strong> - 依次填写各复盘板块内容</li>
+            <li><strong>保存复盘</strong> - 数据保存至本地，可随时修改</li>
+            <li><strong>导出分享</strong> - 支持导出为 Markdown/PDF 格式</li>
+        </ol>
     </section>
 
     <!-- Screenshot Section -->
@@ -871,7 +1136,7 @@
     <section class="usage">
         <div class="section-title">
             <h2>使用说明</h2>
-            <p>简单四步，轻松上手</p>
+            <p>简单五步，轻松上手</p>
         </div>
         <div class="usage-steps">
             <div class="usage-step">
@@ -882,17 +1147,22 @@
             <div class="usage-step">
                 <div class="step-number">2</div>
                 <h4>交易操作</h4>
-                <p>点击持仓卡片上的"买入"按钮进行加仓，点击"卖出"按钮进行减仓。</p>
+                <p>点击持仓卡片上的"买入"按钮进行加仓，点击"卖出"按钮进行减仓（会显示实现盈亏）。</p>
             </div>
             <div class="usage-step">
                 <div class="step-number">3</div>
-                <h4>刷新行情</h4>
-                <p>点击"刷新价格"按钮获取最新股价，系统会自动更新涨跌幅。</p>
+                <h4>每日复盘</h4>
+                <p>点击"每日复盘"标签页，选择日期，填写大盘指数、持仓情况、操作回顾等板块。</p>
             </div>
             <div class="usage-step">
                 <div class="step-number">4</div>
-                <h4>查看交易记录</h4>
-                <p>点击持仓卡片底部的"查看交易记录"按钮，查看所有历史交易。</p>
+                <h4>查看历史复盘</h4>
+                <p>点击"查看历史"按钮，通过日历选择日期，查看历史复盘内容。</p>
+            </div>
+            <div class="usage-step">
+                <div class="step-number">5</div>
+                <h4>刷新行情</h4>
+                <p>点击"刷新价格"按钮获取最新股价，系统会自动更新涨跌幅。</p>
             </div>
         </div>
     </section>
